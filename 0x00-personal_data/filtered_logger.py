@@ -8,7 +8,6 @@ import logging
 import mysql.connector
 from typing import List
 
-
 patterns = {
     'extract': lambda x, y: r'(?P<field>{})=[^{}]*'.format('|'.join(x), y),
     'replace': lambda x: r'\g<field>={}'.format(x),
@@ -81,10 +80,9 @@ def main():
 
 
 class RedactingFormatter(logging.Formatter):
-    """ 
+    """
         redacting Formatter class
     """
-
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     FORMAT_FIELDS = ('name', 'levelname', 'asctime', 'message')
